@@ -27,6 +27,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.InputTransformation.Companion.keyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
@@ -153,9 +154,9 @@ fun  ImcScreen(modifier: Modifier = Modifier) {
                    OutlinedTextField(
                        value =altura,
                        onValueChange = { novoValor->
-                           if (altura.length <=3) {
+
                                altura = novoValor
-                           }
+
                        },
                        placeholder ={
                            Text("Altura")
@@ -167,9 +168,9 @@ fun  ImcScreen(modifier: Modifier = Modifier) {
                        value =peso,
                        onValueChange = {
                            novoValor->
-                           if(peso.length <=3){
+
                                peso = novoValor
-                           }
+
 
                        },
                        placeholder ={
@@ -180,6 +181,9 @@ fun  ImcScreen(modifier: Modifier = Modifier) {
                    )
                    Button(
                        modifier = Modifier.fillMaxWidth(),
+                       colors = ButtonDefaults.buttonColors(
+                           containerColor = colorResource(R.color.corDoApp)
+                       ),
                        onClick = {
                            var alturaN = 0.0
                            var pesoN = 0
@@ -195,7 +199,7 @@ fun  ImcScreen(modifier: Modifier = Modifier) {
                                   peso = peso.replace(",", "")
                                }
                                if (!altura.contains(".")) {
-                                   alturaN = altura.toDouble() / 10
+                                   alturaN = altura.toDouble() / 100
                                }
                                else {
                                    alturaN = altura.toDouble()
